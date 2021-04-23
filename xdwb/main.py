@@ -27,7 +27,10 @@ class XDWB(Sequential):
         else:
             shapeCode = ''.join([self.rootMap[root.name] for root in (scheme[:2] + scheme[-1:])])
         if len(shapeCode) < 4:
-            codeList = [shapeCode + initial for initial in character.initialList]
+            if name in '一丨丿丶乙':
+                codeList = [shapeCode + initial + initial for initial in character.initialList]
+            else:
+                codeList = [shapeCode + initial for initial in character.initialList]
         else:
             codeList = [shapeCode]
         return codeList
